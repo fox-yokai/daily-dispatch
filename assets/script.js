@@ -17,7 +17,6 @@ function displaySuperInfo(response){
 
     // Grab the superhero data from the response
     var heroData = response.results[0];
-    console.log(heroData);
 
     // Create elements for the data
     var heroName = $("<h2>").text(heroData.name)
@@ -27,8 +26,13 @@ function displaySuperInfo(response){
     var firstAppeared = $("<p>").text("First appeared in: " + heroData.biography["first-appearance"]);
     var publisher = $("<p>").text("Published by: " + heroData.biography.publisher);
     // For the appearance, have sub-sections for gender, race, eye color, and hair color
-    var appearance = $("<div>");
-
+    var appearance = $("<div>").text("Appearance: ");
+    var gender = $("<p>").text("Gender: " + heroData.appearance.gender);
+    var race = $("<p>").text("Race: " + heroData.appearance.race);
+    var eyeColor = $("<p>").text("Eye Color: " + heroData.appearance["eye-color"]);
+    var hairColor = $("<p>").text("Hair Color: " + heroData.appearance["hair-color"]);
+    // Add appearance data to appearance div.
+    appearance.append(gender, race, eyeColor, hairColor);
     // Add the elements to the hero info div
     $("#super-info").append(heroName, fullName, connections, hQ, firstAppeared, appearance, publisher);
 
