@@ -6,7 +6,6 @@ function getSuperhero(heroSearch) {
     url: queryURL,
     type: "GET"
   }).then(function(response) {
-    console.log(response);
     displaySuperInfo(response);
   });
 }
@@ -26,7 +25,7 @@ function displaySuperInfo(response){
     var firstAppeared = $("<p>").text("First appeared in: " + heroData.biography["first-appearance"]);
     var publisher = $("<p>").text("Published by: " + heroData.biography.publisher);
     // For the appearance, have sub-sections for gender, race, eye color, and hair color
-    var appearance = $("<div>").text("Appearance: ");
+    var appearance = $("<div>");
     var gender = $("<p>").text("Gender: " + heroData.appearance.gender);
     var race = $("<p>").text("Race: " + heroData.appearance.race);
     var eyeColor = $("<p>").text("Eye Color: " + heroData.appearance["eye-color"]);
