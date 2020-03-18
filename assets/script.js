@@ -58,7 +58,6 @@ function searchNews(heroSearch) {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    // console.log(response);
     renderNewsToPage(response);
   });
 
