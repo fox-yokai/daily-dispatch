@@ -6,7 +6,8 @@ function getSuperhero(heroSearch) {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
+    searchNews(heroSearch);
+    
   });
 
 
@@ -20,9 +21,23 @@ function searchNews(heroSearch) {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
+    renderNewsToPage(response);
   });
 
 }
 
-searchNews("Batman");
+function renderNewsToPage (response) {
+  for (let i = 0; i < response.articles.length; i++) {
+    // newsMain is for future use to hold the image and the main news info
+    var newsMain = $("<div>");
+    var newsInfo = $("<div>").addClass("news-info");
+    var newsHeading = $("<h5>").addClass("news-heading").text(response.articles[i].title);
+    var newsSourceDate = $("<h6>").text((response.articles[i].source.name) + " " + (new Date(response.articles[0].publishedAt).toLocaleDateString()));
+    var newsDescription = $("<p>").text(response.articles[i].description).addClass("news-description");
+  
+    newsMain.append(newsInfo.append(newsInfo, newsHeading, newsSourceDate, newsDescription));
+    $("#news-div").append(newsMain);
+    
+  }
+
+}
