@@ -69,10 +69,11 @@ function renderNewsToPage (response) {
     var newsMain = $("<div>");
     var newsInfo = $("<div>").addClass("news-info");
     var newsHeading = $("<h5>").addClass("news-heading").text(response.articles[i].title);
+    var newsLink = $("<a>").attr("href", response.articles[i].url).attr("target", "_blank").append(newsHeading);
     var newsSourceDate = $("<h6>").text((response.articles[i].source.name) + " " + (new Date(response.articles[0].publishedAt).toLocaleDateString()));
     var newsDescription = $("<p>").text(response.articles[i].description).addClass("news-description");
   
-    newsMain.append(newsInfo.append(newsInfo, newsHeading, newsSourceDate, newsDescription));
+    newsMain.append(newsInfo.append(newsInfo, newsLink, newsSourceDate, newsDescription));
     $("#news-div").append(newsMain);
     
   }
