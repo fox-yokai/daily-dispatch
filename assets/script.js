@@ -87,13 +87,13 @@ function renderNewsToPage (response) {
 $(".search-button").click(function(event){
     event.preventDefault();
     // Store the selector for the input box next to the search button that was clicked
-    var inputBox = $(this).siblings()[0];
+    var inputBox = $("#search-text");
 
     // Store the text that was entered into the input box
-    var heroSearch = inputBox.value;
-
+    var heroSearch = inputBox.val();
+    
     // Clear the input box of any previous text
-    inputBox.value = "";
+    inputBox.val("");
 
     // Search for any heroes that match the input text
     getSuperhero(heroSearch);
