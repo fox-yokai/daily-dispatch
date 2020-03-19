@@ -1,4 +1,10 @@
 body{
+    background-image: url("./images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-color: teal;
+    font: 'Cabin';
     padding-top: 110px;
 }
 
@@ -6,8 +12,16 @@ body{
     padding-top: 5px;
 }
 
+.navbar-brand {
+    font-size: 30px;
+    font-family: 'Lobster';
+    color: black
+}
+
 #super-div{
     padding: 10px;
+    font-family: 'Cabin';
+
 }
 
 img {
@@ -27,6 +41,10 @@ footer{
     color: darkgray;
     text-align: center;
 
+}
+
+h2 {
+    font-family: 'Lobster';
 }
 
 
