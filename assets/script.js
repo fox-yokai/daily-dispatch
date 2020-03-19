@@ -64,6 +64,9 @@ function searchNews(heroSearch) {
 }
 
 function renderNewsToPage (response) {
+    // Clear any existing news articles from a previous search
+    $("#news-div").empty();
+
   for (let i = 0; i < response.articles.length; i++) {
     // newsMain is for future use to hold the image and the main news info
     var newsMain = $("<div>");
@@ -83,7 +86,16 @@ function renderNewsToPage (response) {
 // Create on click/submit event for search bar
 $(".search-button").click(function(event){
     event.preventDefault();
-    var heroSearch = $(this).siblings()[0].value;
+    // Store the selector for the input box next to the search button that was clicked
+    var inputBox = $(this).siblings()[0];
+
+    // Store the text that was entered into the input box
+    var heroSearch = inputBox.value;
+
+    // Clear the input box of any previous text
+    inputBox.value = "";
+
+    // Search for any heroes that match the input text
     getSuperhero(heroSearch);
     
 });
