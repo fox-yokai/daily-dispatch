@@ -64,6 +64,9 @@ function searchNews(heroSearch) {
 }
 
 function renderNewsToPage (response) {
+    // Clear any existing news articles from a previous search
+    $("#news-div").empty();
+
   for (let i = 0; i < response.articles.length; i++) {
     // newsMain is for future use to hold the image and the main news info
     var newsMain = $("<div>");
