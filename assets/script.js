@@ -87,3 +87,17 @@ $(".search-button").click(function(event){
     getSuperhero(heroSearch);
     
 });
+
+// display random superhero function
+function pickRandomHeroID() {
+  // couldn't find a way to dynamically pick the ID, the number 731 would need to be changed if the API changes
+  superID = Math.floor(Math.random() * (731 - 1) + 1);
+  var queryURL = "https://superheroapi.com/api.php/10218260924767452/" + superID;
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    heroName = response.name;
+    getSuperhero(heroName);
+  });
+}
