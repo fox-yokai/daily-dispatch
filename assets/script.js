@@ -64,6 +64,9 @@ function searchNews(heroSearch) {
 }
 
 function renderNewsToPage (response) {
+    // Clear any existing news articles from a previous search
+    $("#news-div").empty();
+
   for (let i = 0; i < response.articles.length; i++) {
     // newsMain is for future use to hold the image and the main news info
     var newsMain = $("<div>");
@@ -83,7 +86,35 @@ function renderNewsToPage (response) {
 // Create on click/submit event for search bar
 $(".search-button").click(function(event){
     event.preventDefault();
-    var heroSearch = $(this).siblings()[0].value;
+    // Store the selector for the input box next to the search button that was clicked
+    var inputBox = $("#search-text");
+
+    // Store the text that was entered into the input box
+    var heroSearch = inputBox.val();
+    
+    // Clear the input box of any previous text
+    inputBox.val("");
+
+    // Search for any heroes that match the input text
     getSuperhero(heroSearch);
     
 });
+
+$(".random-hero-button").click(function(event) {
+  event.preventDefault();
+  pickRandomHeroID()
+})
+
+// display random superhero function
+function pickRandomHeroID() {
+  // couldn't find a way to dynamically pick the ID, the number 731 would need to be changed if the API changes
+  superID = Math.floor(Math.random() * (731 - 1) + 1);
+  var queryURL = "https://superheroapi.com/api.php/10218260924767452/" + superID;
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    heroName = response.name;
+    getSuperhero(heroName);
+  });
+}
