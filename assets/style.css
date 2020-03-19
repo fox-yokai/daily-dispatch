@@ -1,0 +1,29 @@
+body{
+
+}
+
+#super-div{
+    padding: 10px;
+}
+
+img {
+    width: 100%;
+    align-self: center;
+    border: 5px solid black;
+}
+
+#super-info, #news-div{
+    border: 5px solid black;
+}
+
+
+footer{
+    height: 5px;
+    background: black;
+    color: darkgray;
+    text-align: center;
+
+}
+
+
+
