@@ -100,6 +100,11 @@ $(".search-button").click(function(event){
     
 });
 
+$(".random-hero-button").click(function(event) {
+  event.preventDefault();
+  pickRandomHeroID()
+})
+
 // display random superhero function
 function pickRandomHeroID() {
   // couldn't find a way to dynamically pick the ID, the number 731 would need to be changed if the API changes
