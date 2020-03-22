@@ -7,7 +7,7 @@ function getSuperhero(heroSearch) {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    // console.log(response);
+    console.log(response);
     getSuperheroImage(response)
     displaySuperInfo(response);
     var heroName = response.results[0].name + " superhero"
@@ -23,19 +23,24 @@ function displaySuperInfo(response){
     // Grab the superhero data from the response
     var heroData = response.results[0];
 
+    // If any of the data is null, replace with the text "not found"
+    var superData = [];
+    superData.push(heroData.name, heroData.biography["full-name"], heroData.connections["group-affiliation"], heroData.work.base, heroData.biography["first-appearance"], heroData.biography.publisher, heroData.appearance.gender, heroData.appearance.race, heroData.appearance["eye-color"], heroData.appearance["hair-color"]);
+    superData = replaceNullData(superData);
+    console.log(superData);
     // Create elements for the data
-    var heroName = $("<h2>").text(heroData.name)
-    var fullName = $("<p>").text("Full Name: " + heroData.biography["full-name"]);
-    var connections = $("<p>").text("Connections: " + heroData.connections["group-affiliation"]);
-    var hQ = $("<p>").text("Headquartered in: " + heroData.work.base);
-    var firstAppeared = $("<p>").text("First appeared in: " + heroData.biography["first-appearance"]);
-    var publisher = $("<p>").text("Published by: " + heroData.biography.publisher);
+    var heroName = $("<h2>").text(superData[0])
+    var fullName = $("<p>").text("Full Name: " + superData[1]);
+    var connections = $("<p>").text("Connections: " + superData[2]);
+    var hQ = $("<p>").text("Headquartered in: " + superData[3]);
+    var firstAppeared = $("<p>").text("First appeared in: " + superData[4]);
+    var publisher = $("<p>").text("Published by: " + superData[5]);
     // For the appearance, have sub-sections for gender, race, eye color, and hair color
     var appearance = $("<div>");
-    var gender = $("<p>").text("Gender: " + heroData.appearance.gender);
-    var race = $("<p>").text("Race: " + heroData.appearance.race);
-    var eyeColor = $("<p>").text("Eye Color: " + heroData.appearance["eye-color"]);
-    var hairColor = $("<p>").text("Hair Color: " + heroData.appearance["hair-color"]);
+    var gender = $("<p>").text("Gender: " + superData[6]);
+    var race = $("<p>").text("Race: " + superData[7]);
+    var eyeColor = $("<p>").text("Eye Color: " + superData[8]);
+    var hairColor = $("<p>").text("Hair Color: " + superData[9]);
     // Add appearance data to appearance div.
     appearance.append(gender, race, eyeColor, hairColor);
     // Add the elements to the hero info div
@@ -43,12 +48,29 @@ function displaySuperInfo(response){
 
 }
 
-function getSuperheroImage(response) {
-  var image = $("#hero-img").attr("src", response.results[0].image.url)
-  console.log(response)
-  
-  $("#hero-img").append()
+function replaceNullData(heroData){
+  for (let i = 0; i < heroData.length; i++) {
+    const element = heroData[i];
+    if(element == "null" || element == "-"){
+      heroData[i] = "Classified";
+    }
+  }
 
+  return heroData;
+}
+
+// Add the superhero's picture to the page using data from the API.
+function getSuperheroImage(response) {
+// If the hero has an image in the data, replace the placeholder image with the new picture
+  if(response.results[0].image.url != null){
+    $("#hero-img").attr("src", response.results[0].image.url)
+  }
+}
+
+function imageNotFound(image){
+  image.onerror = "";
+  image.src = "https://via.placeholder.com/200.png?text=The+Daily+Dispatch";
+  return true;
 }
 
 
@@ -64,8 +86,15 @@ function searchNews(heroSearch) {
 }
 
 function renderNewsToPage (response) {
-    // Clear any existing news articles from a previous search
-    $("#news-div").empty();
+  // Clear any existing news articles from a previous search
+  $("#news-div").empty();
+
+  // If there are no articles for the hero, display text instead of articles
+  if(response.articles.length === 0){
+    var newsHeading = $("<h5>").addClass("news-heading").text("There doesn't appear to be any recent news about this hero right now.");
+    $("#news-div").append(newsHeading);
+    return;
+  }
 
   for (let i = 0; i < response.articles.length; i++) {
     // newsMain is for future use to hold the image and the main news info
