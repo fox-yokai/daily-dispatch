@@ -1,43 +1,66 @@
 body{
     background-image: url("./images/background.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-attachment: fixed;
     background-size: 100%;
-    background-color: teal;
+    background-color: #3a6e86;
     font: 'Cabin';
-    padding-top: 110px;
+    padding-top: 150px;
+    color: white;
+    
 }
 
 .input-group{
     padding-top: 5px;
 }
 
-.navbar-brand {
-    font-size: 30px;
-    font-family: 'Lobster';
-    color: black
+.navbar{
+    background-color:#34235a8e;
 }
 
-#super-div{
-    padding: 10px;
+.navbar-brand {
+    font-size: 50px;
+    font-family: 'Lobster';
+    color: #f81239;
+
+}
+
+.random-hero-button, .search-button{
+    background-color: #f81239;
+}
+
+.container{
+    padding: 15px;
     font-family: 'Cabin';
+    background-color:#34235ab6;
 
 }
 
 img {
     width: 100%;
     align-self: center;
-    border: 5px solid black;
+    border: 3px solid #fc2463;
+    
 }
 
-#super-info, #news-div{
-    border: 5px solid black;
+#super-div, #news-div{
+    border: 3px solid #fc2463;
+    background-color: #34235a8e;
 }
 
+.news-info{
+    background-color: #34235a8e;
+    border: 1px solid #34235a;
+}
+
+.news-heading {
+    color: #527e9b;
+    font-family: 'Lobster';
+
+}
 
 footer{
-    height: 5px;
-    background: black;
+    background:#34235a8e;
     color: darkgray;
     text-align: center;
 
@@ -45,6 +68,8 @@ footer{
 
 h2 {
     font-family: 'Lobster';
+    color: #527e9b;
+
 }
 
 
