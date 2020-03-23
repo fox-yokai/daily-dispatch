@@ -56,7 +56,6 @@ function displaySuperInfo(response){
     $("#super-info").append(heroName, fullName, connections, hQ, firstAppeared, appearance, publisher);
 
 }
-
 // Function that replaces "null" data in the given array with the word "Classified" for a better viewing experience
 function replaceNullData(heroData){
   // Loop through all the data within the array
@@ -100,6 +99,19 @@ function searchNews(heroSearch) {
     renderNewsToPage(response);
   });
 
+  // setting the height of the right div = to the left
+  var right=$('#news-div').height();
+    var left=$('#super-div').height();
+    console.log(right, left)
+    if(left>right)
+    {
+        $('#news-div').height(left);
+    }
+    else
+    {
+        $('#super-div').height(right);
+    }
+
 }
 
 // Function that displays news articles to the page. 
@@ -131,8 +143,10 @@ function renderNewsToPage (response) {
 
     // Add the built article to the "news-div" on the page.
     $("#news-div").append(newsMain);
-    
+   
   }
+
+  
 
 }
 
@@ -177,3 +191,4 @@ function pickRandomHeroID() {
     getSuperhero(heroName);
   });
 }
+
