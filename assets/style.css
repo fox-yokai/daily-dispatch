@@ -17,17 +17,16 @@ body{
 
 .navbar{
     background-color:#34235a8e;
+    color: #8cf7dad0;
 }
 
 .navbar-brand {
     font-size: 50px;
     font-family: 'Lobster';
-    color: #f81239;
-
 }
 
 .random-hero-button, .search-button{
-    background-color: #f81239;
+    background-color: #fc2463;
 }
 
 .container{
@@ -40,24 +39,30 @@ body{
 img {
     width: 100%;
     align-self: center;
-    border: 3px solid #fc2463;
+    border: 3px solid #ff3574;
+    border-radius: 5px;
 }
 
 
 
 #super-div, #news-div{
-    border: 3px solid #fc2463;
+    border: 3px solid #ff3574;
+    border-radius: 5px;
     background-color: #34235a8e;
-    overflow-y: scroll;
+    margin: 10px;
+   
 }
    
 .news-info{
     background-color: #34235a8e;
-    border: 1px solid #34235a;
+    border: 2px solid #527e9bb2;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 3px;
 }
 
 .news-heading {
-    color: #527e9b;
+    color: #c5dae9;
     font-family: 'Lobster';
 }
 
@@ -70,7 +75,7 @@ footer{
 
 h2 {
     font-family: 'Lobster';
-    color: #527e9b;
+    color: #c5dae9;
 
 }
 

@@ -39,17 +39,17 @@ function displaySuperInfo(response){
 
     // Create elements for the data and display the data in each element.
     var heroName = $("<h2>").text(superData[0])
-    var fullName = $("<p>").text("Full Name: " + superData[1]);
+    var fullName = $("<p>").text("FULL NAME: " + superData[1]);
     var connections = $("<p>").text("Connections: " + superData[2]);
-    var hQ = $("<p>").text("Headquartered in: " + superData[3]);
+    var hQ = $("<p>").text("Headquartereds: " + superData[3]);
     var firstAppeared = $("<p>").text("First appeared in: " + superData[4]);
     var publisher = $("<p>").text("Published by: " + superData[5]);
     // For the appearance, have sub-sections for gender, race, eye color, and hair color
     var appearance = $("<div>");
-    var gender = $("<p>").text("Gender: " + superData[6]);
-    var race = $("<p>").text("Race: " + superData[7]);
-    var eyeColor = $("<p>").text("Eye Color: " + superData[8]);
-    var hairColor = $("<p>").text("Hair Color: " + superData[9]);
+    var gender = $("<p>").text("GENDER: " + superData[6]);
+    var race = $("<p>").text("RACE: " + superData[7]);
+    var eyeColor = $("<p>").text("EYE COLOR: " + superData[8]);
+    var hairColor = $("<p>").text("HAIR COLOR: " + superData[9]);
     // Add appearance data to appearance div.
     appearance.append(gender, race, eyeColor, hairColor);
     // Add the elements to the hero info div
@@ -63,7 +63,7 @@ function replaceNullData(heroData){
     const element = heroData[i];
     // If the data at the current index is null or blank, replace with "Classified"
     if(element == "null" || element == "-"){
-      heroData[i] = "Classified";
+      heroData[i] = "CLASSIFIED";
     }
   }
   // Return the edited array
@@ -89,7 +89,7 @@ function imageNotFound(image){
 // Function to search the News API for news articles about the searched hero
 function searchNews(heroSearch) {
   // URL that searches all articles based on relevancy, returning the first ten articles found.
-  var queryURL = "https://newsapi.org/v2/everything?q=" + heroSearch + "&sortBy=relevancy&pageSize=10&apiKey=68f6bf548a8a4025ae19d9fdbe7ecfab";
+  var queryURL = "https://newsapi.org/v2/everything?q=" + heroSearch + "&sortBy=relevancy&pageSize=7&apiKey=68f6bf548a8a4025ae19d9fdbe7ecfab";
   // Ajax call to the News API
   $.ajax({
     url: queryURL,
@@ -99,18 +99,6 @@ function searchNews(heroSearch) {
     renderNewsToPage(response);
   });
 
-  // setting the height of the right div = to the left
-  var right=$('#news-div').height();
-    var left=$('#super-div').height();
-    console.log(right, left)
-    if(left>right)
-    {
-        $('#news-div').height(left);
-    }
-    else
-    {
-        $('#super-div').height(right);
-    }
 
 }
 
