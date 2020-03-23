@@ -48,6 +48,7 @@ function displaySuperInfo(response){
 
 }
 
+
 function replaceNullData(heroData){
   for (let i = 0; i < heroData.length; i++) {
     const element = heroData[i];
@@ -83,6 +84,19 @@ function searchNews(heroSearch) {
     renderNewsToPage(response);
   });
 
+  // setting the height of the right div = to the left
+  var right=$('#news-div').height();
+    var left=$('#super-div').height();
+    console.log(right, left)
+    if(left>right)
+    {
+        $('#news-div').height(left);
+    }
+    else
+    {
+        $('#super-div').height(right);
+    }
+
 }
 
 function renderNewsToPage (response) {
@@ -107,8 +121,10 @@ function renderNewsToPage (response) {
   
     newsMain.append(newsInfo.append(newsInfo, newsLink, newsSourceDate, newsDescription));
     $("#news-div").append(newsMain);
-    
+   
   }
+
+  
 
 }
 
@@ -147,3 +163,4 @@ function pickRandomHeroID() {
     getSuperhero(heroName);
   });
 }
+
