@@ -41,14 +41,16 @@ img {
     width: 100%;
     align-self: center;
     border: 3px solid #fc2463;
-    
 }
+
+
 
 #super-div, #news-div{
     border: 3px solid #fc2463;
     background-color: #34235a8e;
+    overflow-y: scroll;
 }
-
+   
 .news-info{
     background-color: #34235a8e;
     border: 1px solid #34235a;
@@ -57,7 +59,6 @@ img {
 .news-heading {
     color: #527e9b;
     font-family: 'Lobster';
-
 }
 
 footer{
