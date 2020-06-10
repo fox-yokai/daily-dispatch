@@ -2,6 +2,8 @@
 ## Purpose
 We are building a superhero search application that gathers news about them and provides detailed data related to them.
 
+![landing page](https://github.com/fox-yokai/daily-dispatch/blob/master/assets/images/daily-dispatch.png?raw=true)
+
 ## How To Use
 Its simple to use. Either type in the name of a superhero in the search field and click the search button or click random button.
 
